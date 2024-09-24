@@ -1,23 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Quizz from './Quizz';
+import Login from './Login';
 
 function App() {
+  const[move,setmove]=React.useState(true)
+  const checkpage=()=>{
+              setmove(!move)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {
+    move?<Login checkpage={checkpage}/>:<Quizz checkpage={checkpage}/>
+}
     </div>
   );
 }
